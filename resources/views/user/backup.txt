@@ -1,0 +1,151 @@
+@extends('layouts.pages-user.main-content')
+
+@section('content')
+<main>
+    <section class="section-padding pb-0" id="tentang">
+        <div class="container mb-5 pb-lg-5">
+            <div class="row">
+                <div class="col-12" style="text-align:center">
+                    <h2 class="mb-3" data-aos="fade-up">Tentang Kampus</h2>
+                </div>
+                    
+                <div class=" col-12 mt-lg-3 mb-lg-5">
+                    <p data-aos="fade-up" data-aos-delay="500">
+                        <?php
+                            $tentang = DB::table('abouts')->get();
+                            foreach($tentang as $c){
+                                echo $c->description;
+                            }
+                        ?>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding" id="portfolio">
+        <div class="container mb-5 pb-lg-5" style="text-align: center">
+            <div class="row">
+                <div class="col-6 col-6 mt-6 mb-lg-6">
+                    <h2 class="mb-5" data-aos="fade-up">DEPARTEMEN TI</h2>
+                </div>
+                
+                <div class="col-lg-6 col-6 mt-6 mb-lg-6">
+                    <h2 class="mb-5" data-aos="fade-up">DEPARTEMEN MMB</h2>
+                </div>
+                
+                <div class="col-lg-6 col-12 mt-3 mb-lg-5">
+                    <p class="me-4" data-aos="fade-up" data-aos-delay="300">
+                        <a href="{{ asset('images/images.jpg') }}" class="image-popup">
+                            <img src="{{ asset('images/images.jpg') }}" class="img-fluid" alt="">
+                        </a>
+                        <p data-aos="fade-up" data-aos-delay="500" style="color: black">
+                            <?php
+                                $tentang = DB::table('departements')->get();
+                                foreach($tentang as $c){
+                                    echo $c->keterangan;
+                                }
+                            ?>
+                        </p>
+                    </p>
+                </div>
+                    
+                <div class="col-lg-6 col-12 mt-lg-3 mb-lg-5">
+                    <p class="me-4" data-aos="fade-up" data-aos-delay="300">
+                        <a href="{{ asset('images/images.jpg') }}" class="image-popup">
+                            <img src="{{ asset('images/images.jpg') }}" class="img-fluid" alt="">
+                        </a>
+                        <p data-aos="fade-up" data-aos-delay="500" style="color: black">
+                            <?php
+                                $tentang = DB::table('departements')->get();
+                                foreach($tentang as $c){
+                                    echo $c->keterangan;
+                                }
+                            ?>
+                        </p>
+                    </p>
+                </div>
+            </div>
+    </section>
+
+    <section class="section-padding" id="diploma3">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <h2 class="mb-5 text-center" data-aos="fade-up">Diploma 3</h2>
+                    </div>
+
+                    <div class=" col-12 mt-lg-3 mb-lg-5">
+                        <p data-aos="fade-up" data-aos-delay="500">
+                            <?php
+                                $tentang = DB::table('majors')->get();
+                                foreach($tentang as $c){
+                                    echo $c->description;
+                                }
+                            ?>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class=" contact section-padding" id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h2 class="mb-5 text-center" data-aos="fade-up">PMB</h2>
+                </div>
+
+                <div class="col-lg-6 col-12">
+                    <div class="portfolio-thumb mb-5" data-aos="fade-up">
+                        <div class="portfolio-info">   
+                        <p data-aos="fade-up" data-aos-delay="500"> 
+                                
+                            <?php
+                                $major = DB::table('majors')->where(['id'=>1])->get();
+                                foreach($major as $d){
+                            ?>  
+                        </p>  
+                                </div>  
+                        <div class="col-lg-12 col-12 mt-lg-3 mb-lg-5">      
+                            <h4 class="portfolio-title mb-0"  style="font-size:17px"><?= $d->description ?></h4>
+                            <?php } ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    
+    <section class="section-padding" id="berita">
+        <div class="container mb-5 pb-lg-5">
+            <div class="row">
+                <div class="col-12" style="text-align:center">
+                    <h2 class="mb-3" data-aos="fade-up">Berita</h2>
+                </div>
+                <?php
+                    $tentang = DB::table('berita')->get();
+                    foreach($tentang as $c){
+                ?>
+                <div class="card col-lg-6 col-12 mt-3 mb-lg-5" style="width: 41rem;"  data-aos="fade-up" data-aos-delay="500">
+                    <a href="{{ asset('images/<?= $c->gambar ?>') }}" class="image-popup">
+                        <img class="card-img-top" src="{{ asset('images/<?= $c->gambar ?>') }}" alt="Card image cap" style="margin-top: 10px;">
+                    </a>
+                    <div class="card-body">
+                        <h5 class="card-title" data-aos="fade-up" data-aos-delay="500"><?= $c->judul; ?></h5>
+                        <p class="card-text" data-aos="fade-up" data-aos-delay="500">
+                            <?= $c->keterangan; ?>
+                        </p>
+                        <a href="#" class="btn btn-primary">More Info</a>
+                    </div>
+                </div>
+                <?php
+                    }
+                ?>
+            </div>
+    </section>
+
+</main>
+@endsection
